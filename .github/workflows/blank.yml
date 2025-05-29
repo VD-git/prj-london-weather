@@ -32,5 +32,5 @@ jobs:
       - name: DVC
         run: |
           dvc repro
-          dvc metrics show data/metrics.json
+          dvc metrics show output/metrics.json
 
