@@ -28,5 +28,6 @@ jobs:
       # Runs a single command using the runners shell
       - name: Great Expectations
         run: |
+          pip install -r requirements.txt
           python3 gx_validation.py --csv london_weather.csv
 
