@@ -25,9 +25,11 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      # Runs a single command using the runners shell
-      - name: Great Expectations
+      - name: Requirements
         run: |
           pip install -r requirements.txt
-          python3 gx_validation.py --csv london_weather.csv
+
+      - name: DVC
+        run: |
+          dvc repro
 
