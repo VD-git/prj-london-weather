@@ -26,8 +26,7 @@ jobs:
       - uses: actions/checkout@v4
 
       # Runs a single command using the runners shell
-      - name: Run a one-line script
+      - name: Great Expectations
         run: |
-          echo Hello, world!
-          ls
+          python3 gx_validation.py --csv london_weather.csv
 
