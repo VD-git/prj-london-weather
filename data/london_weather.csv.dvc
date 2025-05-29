@@ -1,0 +1,5 @@
+outs:
+- md5: 9f427698c2d6b23c5d22c5fc25421f20
+  size: 814426
+  hash: md5
+  path: london_weather.csv
