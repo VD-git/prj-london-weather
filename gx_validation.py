@@ -48,8 +48,9 @@ def go(args):
     
     checkpoint = gx.Checkpoint(name = "checkpoint", validation_definitions = [validation_definition], actions=[])
     checkpoint_results = checkpoint.run(batch_parameters={"dataframe": df})
-    
-    print(f"Eval: {checkpoint_results.success}\nReport:\n{checkpoint_results.describe()}\n")
+
+    with open("output/metrics.json", "w+") as f:
+        json.dump({"status": checkpoint_results.success, "logs": checkpoint_results.describe()}, f)
 
 if __name__ == '__main__':
 

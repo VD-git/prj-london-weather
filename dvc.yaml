@@ -1,0 +1,8 @@
+stages:
+  great_expectations:
+    cmd: python3 gx_validation.py --csv london_weather.csv
+    deps:
+    - data/london_weather.csv
+    - gx_validation.py
+    outs:
+    - output/metrics.json
