@@ -31,6 +31,8 @@ jobs:
 
       - name: DVC
         run: |
+          git rm -r --cached 'output/metrics.json'
+          git commit -m "stop tracking output/metrics.json"
           dvc repro
 
       - name: Git Update
