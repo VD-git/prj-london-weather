@@ -28,3 +28,5 @@ stages:
     outs:
       - output/multivariate.png
       - output/results_multivariate.csv
+      - output/univariate.png
+      - output/results_univariate.csv
