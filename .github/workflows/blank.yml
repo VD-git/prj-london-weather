@@ -35,9 +35,10 @@ jobs:
 
       - name: Git Update
         run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add .
-          git commit -m "refresh files that were generated"
-          git push
+          ls -ll output/
+          # git config user.name github-actions
+          # git config user.email github-actions@github.com
+          # git add .
+          # git commit -m "refresh files that were generated"
+          # git push
 
