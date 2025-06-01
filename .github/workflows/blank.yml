@@ -35,6 +35,7 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add -f output/
+          git commit -m "empty files for dvc"
           git push
 
       - name: DVC
