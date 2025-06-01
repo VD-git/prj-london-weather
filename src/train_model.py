@@ -15,7 +15,7 @@ from sklearn.ensemble import RandomForestRegressor
 def prepare_dataset(df:pd.DataFrame):
 
     df.dropna(subset=['mean_temp'], inplace = True)
-    X = df.drop(['mean_temp'], axis = 1)
+    X = df.drop(['mean_temp', 'date'], axis = 1)
     y = df['mean_temp']
     X_train, X_test, y_train, y_test = train_test_split(X.values, y, test_size=0.3, random_state=42)
 

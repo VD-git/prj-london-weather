@@ -3,3 +3,4 @@ pandas==2.1.4
 dvc==3.59.2
 scikit-learn==1.6.1
 numpy==1.26.4
+nannyml==0.13.0
