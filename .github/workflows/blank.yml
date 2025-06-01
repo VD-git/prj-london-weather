@@ -42,7 +42,7 @@ jobs:
           last_commit=$(git log --format="%H" -n 1)
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git add .
+          git add output/
           git commit -m "refresh files that were generated in commit $last_commit"
           git push
 
