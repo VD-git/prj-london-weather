@@ -10,10 +10,21 @@ stages:
 
   train_model:
     cmd: |
-      python3 src/train_model.py --csv london_weather.csv --params '{"model__max_depth": [5], "model__n_estimators": [100]}'
+      python3 src/train_model.py --csv old_london_weather.csv --params '{"model__max_depth": [5], "model__n_estimators": [100]}'
     deps:
       - data/london_weather.csv
       - src/train_model.py
     outs:
       - output/model_metrics.json
       - output/model.pkl
+
+  monitor_model:
+    cmd: |
+      python3 src/monitor_model.py --cols "cloud_cover,sunshine,global_radiation,max_temp,min_temp,precipitation,pressure,snow_depth,date" --date_col "date" --reference_csv "old_london_weather.csv" --analysis_csv "new_london_weather.csv"
+    deps:
+      - data/old_london_weather.csv
+      - data/new_london_weather.csv
+      - src/monitor_model.py
+    outs:
+      - output/multivariate.png
+      - output/results_multivariate.csv
