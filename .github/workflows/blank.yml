@@ -31,12 +31,11 @@ jobs:
 
       - name: DVC
         run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git rm -r --cached 'output/metrics.json'
-          git commit -m "stop tracking output/metrics.json"
+          # git config user.name github-actions
+          # git config user.email github-actions@github.com
+          # git rm -r --cached 'output/metrics.json'
+          # git commit -m "stop tracking output/metrics.json"
           dvc repro
-          ls output/
 
       - name: Git Update
         run: |
@@ -45,7 +44,7 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           git config set advice.addIgnoredFile false
-          git add output/metrics.json
+          git add output/
           git commit -m "refresh files that were generated in commit $last_commit"
           git push
 
