@@ -32,6 +32,8 @@ jobs:
       - name: Empty Files
         run: |
           touch output/metrics.json
+          touch output/model_metrics.json
+          touch output/model.pkl
 
           # Commit here only if there was any changes
           if git diff --quiet; then
