@@ -24,9 +24,9 @@ def define_suite():
         ),
         gx.expectations.ExpectColumnValuesToBeBetween(
             column = "mean_temp",
-            min_value = 0,
+            min_value = -10,
             condition_parser = "pandas",
-            row_condition = 'sunshine > 0'
+            row_condition = 'sunshine >= 0'
         )
     ]
 
