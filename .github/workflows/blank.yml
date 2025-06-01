@@ -27,7 +27,7 @@ jobs:
 
       - name: Requirements
         run: |
-          pip install -r requirements.txt
+          pip install -r src/requirements.txt
 
       - name: Empty Files
         run: |
