@@ -1,8 +1,19 @@
 stages:
   great_expectations:
-    cmd: python3 gx_validation.py --csv london_weather.csv
+    cmd: | 
+      python3 gx_validation.py --csv london_weather.csv
     deps:
-    - data/london_weather.csv
-    - gx_validation.py
+      - data/london_weather.csv
+      - gx_validation.py
     outs:
-    - output/metrics.json
+      - output/metrics.json
+
+  train_model:
+    cmd: |
+      python3 train_model.py --csv london_weather.csv --params '{"model__max_depth": [5], "model__n_estimators": [100]}'
+    deps:
+      - data/london_weather.csv
+      - train_model.py
+    outs:
+      - output/model_metrics.json
+      - output/model.pkl
