@@ -36,17 +36,13 @@ jobs:
           git rm -r --cached 'output/metrics.json'
           git commit -m "stop tracking output/metrics.json"
           dvc repro
-          # dvc commit
-          # dvc push
 
       - name: Git Update
         run: |
-          ls output/
-          # last_commit=$(git log --format="%H" -n 1)
+          last_commit=$(git log --format="%H" -n 1)
           git config user.name github-actions
           git config user.email github-actions@github.com
-          # git config set advice.addIgnoredFile false
-          git add -f output/metrics.json
+          git add -f output/metrics.json .dvc/cache dvc.lock
           git commit -m "refresh files that were generated in commit $last_commit"
           git push
 
