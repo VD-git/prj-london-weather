@@ -13,6 +13,16 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestRegressor
 
 def prepare_dataset(df:pd.DataFrame):
+    """
+    Preprocessing of the dataset for training the model
+    Args:
+        df: pd.DataFrame
+    Outputs:
+        X_train: np.array
+        X_test: np.array
+        y_train: np.array
+        y_test: np.array
+    """
 
     df.dropna(subset=['mean_temp'], inplace = True)
     X = df.drop(['mean_temp', 'date'], axis = 1)
@@ -23,6 +33,14 @@ def prepare_dataset(df:pd.DataFrame):
     
 
 def build_pipeline(params:dict):
+    """
+    Build of the pipeline to train the model
+    Args:
+        params: dict
+            Parameters to be inputed for the gridsearch
+    Outputs:
+        pipeline_cv: Pipeline
+    """
 
     pipeline = Pipeline(
         steps=[

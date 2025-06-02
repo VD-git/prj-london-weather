@@ -5,6 +5,9 @@ import os
 import great_expectations as gx
 
 def define_batch():
+    """
+    Define the batch for great expectations
+    """
     
     context = gx.get_context()
     data_source = context.data_sources.add_pandas(name="dataframe")
@@ -14,6 +17,9 @@ def define_batch():
     return context, batch_definition
 
 def define_suite():
+    """
+    Define the suite (list of great expectations validations)
+    """
 
     suite = gx.ExpectationSuite(name = "suite")
 
@@ -36,6 +42,11 @@ def define_suite():
     return suite
 
 def go(args):
+    """
+    With a context, batch and suite definied, validation definition and checkpoint definition will be created to run the tests
+    This one is a more complex method instead of just validating the batch after it was definied
+    Purpose here is checking the quality of the data that is coming through `--csv`
+    """
 
     df = pd.read_csv(os.path.join("data", args.csv))
     context, batch_definition = define_batch()
