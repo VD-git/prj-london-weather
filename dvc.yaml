@@ -20,13 +20,18 @@ stages:
 
   monitor_model:
     cmd: |
-      python3 src/monitor_model.py --cols "cloud_cover,sunshine,global_radiation,max_temp,min_temp,precipitation,pressure,snow_depth,date" --date_col "date" --reference_csv "old_london_weather.csv" --analysis_csv "new_london_weather.csv"
+      python3 src/monitor_model.py --date_col "date" --y_label "mean_temp" --method "wasserstein" --reference_csv "old_london_weather.csv" --analysis_csv "new_london_weather.csv"
     deps:
       - data/old_london_weather.csv
       - data/new_london_weather.csv
+      - output/model.pkl
       - src/monitor_model.py
     outs:
       - output/multivariate.png
       - output/results_multivariate.csv
       - output/univariate.png
       - output/results_univariate.csv
+      - output/performance.png
+      - output/performance_results.csv
+      - output/feature_drift_ranker.csv
+      - output/feature_drift_correlation_ranker.csv
