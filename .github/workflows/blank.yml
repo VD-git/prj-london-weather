@@ -53,6 +53,8 @@ jobs:
           git rm -r --cached output/
           git commit -m "stop tracking outputs"
           dvc repro
+          dvc dag
+          dvc dag --outs
 
       - name: Git Update
         run: |
