@@ -1,18 +1,93 @@
 schema: '2.0'
 stages:
   great_expectations:
-    cmd: python3 gx_validation.py --csv london_weather.csv
+    cmd: "python3 src/gx_validation.py --csv london_weather.csv\n"
     deps:
     - path: data/london_weather.csv
       hash: md5
-      md5: 9f427698c2d6b23c5d22c5fc25421f20
-      size: 814426
-    - path: gx_validation.py
+      md5: c02528c4e7595267cbcb2c5c2c349aec
+      size: 829768
+    - path: src/gx_validation.py
       hash: md5
-      md5: a458853347b8dbb82fd65ed971e62e88
-      size: 2147
+      md5: dd3b7a50eacb1599ea8a8838840670ee
+      size: 2609
     outs:
     - path: output/metrics.json
       hash: md5
       md5: 92e351099e30644ea32fe8fab7a2a1e5
       size: 3172
+  train_model:
+    cmd: "python3 src/train_model.py --csv old_london_weather.csv --params '{\"model__max_depth\"\
+      : [5], \"model__n_estimators\": [100]}'\n"
+    deps:
+    - path: data/london_weather.csv
+      hash: md5
+      md5: c02528c4e7595267cbcb2c5c2c349aec
+      size: 829768
+    - path: src/train_model.py
+      hash: md5
+      md5: 65a6908f1f3bcd4da95f2bdc41899c2c
+      size: 2612
+    outs:
+    - path: output/model.pkl
+      hash: md5
+      md5: 56b75037557afc9aaf9edd7b2e815a12
+      size: 12562047
+    - path: output/model_metrics.json
+      hash: md5
+      md5: acc3341259bb393555ee2615149097c3
+      size: 28
+  monitor_model:
+    cmd: "python3 src/monitor_model.py --date_col \"date\" --y_label \"mean_temp\"\
+      \ --method \"wasserstein\" --reference_csv \"old_london_weather.csv\" --analysis_csv
+      \"new_london_weather.csv\"\n"
+    deps:
+    - path: data/new_london_weather.csv
+      hash: md5
+      md5: 654ab12459755980bd09457ce182fce1
+      size: 38023
+    - path: data/old_london_weather.csv
+      hash: md5
+      md5: 0d0cf8762a43ecd655af0cf97c274644
+      size: 776508
+    - path: output/model.pkl
+      hash: md5
+      md5: 56b75037557afc9aaf9edd7b2e815a12
+      size: 12562047
+    - path: src/monitor_model.py
+      hash: md5
+      md5: 57fffac895259543765b7cf5685f2eb7
+      size: 8877
+    outs:
+    - path: output/feature_drift_correlation_ranker.csv
+      hash: md5
+      md5: da82b19241ddec635d29780873a57947
+      size: 533
+    - path: output/feature_drift_ranker.csv
+      hash: md5
+      md5: ad5dc40c41d1b77f12f7e88db21b5682
+      size: 156
+    - path: output/multivariate.png
+      hash: md5
+      md5: 02d7181bf2ba2d815cfa7cdcda8b57aa
+      size: 39380
+    - path: output/performance.png
+      hash: md5
+      md5: fb881194067b45f09525539d89040f6d
+      size: 52643
+    - path: output/performance_results.csv
+      hash: md5
+      md5: 9cc3d050e7a4597e8aeda2de53d3a78a
+      size: 80088
+    - path: output/results_multivariate.csv
+      hash: md5
+      md5: 9187d97679cb54273fa6f84b5daf6542
+      size: 4095
+    - path: output/results_univariate.csv
+      hash: md5
+      md5: 1c8228ceba53f17a14ee8bc890432c48
+      size: 20598
+    - path: output/univariate.png
+      hash: md5
+      md5: f66cb9d58d16ff3a3481e8aabc975cc0
+      size: 481595
