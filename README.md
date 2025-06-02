@@ -10,7 +10,7 @@ Several tools were applied in this project to support development and ensure rob
 Through Great Expectations is possible to build a complex architecture for validating data, getting as output the following ![json](output/metrics.json)
 
 ## DVC
-Using DVC (dvc.yaml) is possible to build the following dags:
+Using DVC ![dvc.yaml](dvc.yaml) is possible to build the following dags:
 
 - Without outputs
 
