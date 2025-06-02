@@ -7,9 +7,18 @@ Several tools were applied in this project to support development and ensure rob
 - **NannyML:** Applied to detect model drift over time.
 
 ## Great Expectations
-...
+Through Great Expectations is possible to build a complex architecture for validating data, getting as output the following ![json](output/metrics.json)
+
 ## DVC
-...
+Using DVC (dvc.yaml) is possible to build the following dags:
+
+- Without outputs
+
+![image](https://github.com/user-attachments/assets/9869b987-a010-4de8-bce0-c9a0f54c6415)
+
+- With outputs
+
+![image](https://github.com/user-attachments/assets/7e1a7ce2-d90f-4cd1-938b-f3d8f586ecb4)
 
 ## NannyML
 One of the biggest challenges after deploying a model is knowing when to retrain it. Retraining frequently can be expensive and time-consuming, and in many real-world cases, ground truth labels may not be immediately available, they might take months or even years to collect, or sometimes never arrive at all.
