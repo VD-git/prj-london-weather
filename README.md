@@ -12,7 +12,7 @@ Several tools were applied in this project to support development and ensure rob
 ...
 
 ## NannyML
-One of the biggest challenges after deploying a model is knowing when to retrain it. Retraining frequently can be expensive and time-consuming, and in many real-world cases, ground truth labels may not be immediately available—they might take months or even years to collect, or sometimes never arrive at all.
+One of the biggest challenges after deploying a model is knowing when to retrain it. Retraining frequently can be expensive and time-consuming, and in many real-world cases, ground truth labels may not be immediately available, they might take months or even years to collect, or sometimes never arrive at all.
 To address this, a practical approach is to:
 - Start with a multivariate drift check to detect whether the overall data distribution has changed;
 - If drift is detected, perform univariate drift checks on individual features to identify which variables are contributing to the shift.
