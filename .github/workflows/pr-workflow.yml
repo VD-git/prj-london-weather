@@ -22,8 +22,8 @@ jobs:
       - name: black validation
         run: |
           python -m black --check .
-          if [ $? -eq 0 ]; then
-              exit 0
-          else
-              exit 1
-          fi
+          # if [ $? -eq 0 ]; then
+          #     exit 0
+          # else
+          #     exit 1
+          # fi
