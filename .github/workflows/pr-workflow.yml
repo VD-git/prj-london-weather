@@ -4,6 +4,9 @@ on:
   pull_request:
     branches: [ "main" ]
 
+permissions:
+  pull-requests: write
+
 env:
   files: >-
     src/train_model.py
