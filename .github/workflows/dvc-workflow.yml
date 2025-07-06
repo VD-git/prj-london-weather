@@ -72,7 +72,6 @@ jobs:
       - name: Metrics Validation
         run: |
           dvc metrics show --md > report.md
-          dvc metrics diff --md main >> report.md
           cml comment create report.md
           cml comment create change.md
         env:
