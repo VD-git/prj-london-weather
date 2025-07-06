@@ -15,8 +15,10 @@ stages:
       - data/old_london_weather.csv
       - src/train_model.py
     outs:
-      - output/model_metrics.json
       - output/model.pkl
+    metrics:
+      - output/model_metrics.json:
+          cache: false
 
   monitor_model:
     cmd: |
