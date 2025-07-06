@@ -5,8 +5,8 @@ stages:
     deps:
     - path: data/london_weather.csv
       hash: md5
-      md5: c02528c4e7595267cbcb2c5c2c349aec
-      size: 829768
+      md5: 1f8b9e5b88fa9037607e52849403d118
+      size: 829769
     - path: src/gx_validation.py
       hash: md5
       md5: 6fe2108e56e78f791a58309d574e4cb1
@@ -14,8 +14,8 @@ stages:
     outs:
     - path: output/metrics.json
       hash: md5
-      md5: 36fef5d8533b8e669d33608ee2bb8d40
-      size: 4190
+      md5: 5b58368ba4d08877333027f185cb8183
+      size: 4556
   train_model:
     cmd: "python3 src/train_model.py --csv old_london_weather.csv --params '{\"model__max_depth\"\
       : [5], \"model__n_estimators\": [100]}'\n"
