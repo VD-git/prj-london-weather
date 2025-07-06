@@ -5,10 +5,10 @@ on:
     branches: [ "main" ]
 
 env:
-  files: |
-    - src/train_model.py
-    - src/monitor_model.py
-    - src/gx_validation.py
+  files: >-
+    src/train_model.py
+    src/monitor_model.py
+    src/gx_validation.py
 
 jobs:
   # This workflow contains a single job called "build"
@@ -51,5 +51,5 @@ jobs:
 
       - name: black validation
         run: |
-          echo "Files to be tracked: {{  env.files  }}"
-          python -m black --check {{  env.files }}
+          echo "Files to be tracked: $files"
+          python -m black --check $filesss
