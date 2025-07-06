@@ -18,7 +18,7 @@ stages:
       size: 4556
   train_model:
     cmd: "python3 src/train_model.py --csv old_london_weather.csv --params '{\"model__max_depth\"\
-      : [5], \"model__n_estimators\": [100]}'\n"
+      : [2, 4], \"model__n_estimators\": [100]}'\n"
     deps:
     - path: data/old_london_weather.csv
       hash: md5
@@ -31,12 +31,12 @@ stages:
     outs:
     - path: output/model.pkl
       hash: md5
-      md5: af33f1258e2edfc5551b8f96474eac71
-      size: 12606255
+      md5: 401e930234798700e67b3197f507b2d6
+      size: 12557439
     - path: output/model_metrics.json
       hash: md5
-      md5: e4b81eda86c6dc960dc9c92c29ebd85c
-      size: 28
+      md5: 149b97bb65e2ffc3bc763669f2e16dec
+      size: 27
   monitor_model:
     cmd: "python3 src/monitor_model.py --date_col \"date\" --y_label \"mean_temp\"\
       \ --method \"wasserstein\" --reference_csv \"old_london_weather.csv\" --analysis_csv
@@ -52,8 +52,8 @@ stages:
       size: 776508
     - path: output/model.pkl
       hash: md5
-      md5: af33f1258e2edfc5551b8f96474eac71
-      size: 12606255
+      md5: 401e930234798700e67b3197f507b2d6
+      size: 12557439
     - path: src/monitor_model.py
       hash: md5
       md5: 57fffac895259543765b7cf5685f2eb7
@@ -61,7 +61,7 @@ stages:
     outs:
     - path: output/feature_drift_correlation_ranker.csv
       hash: md5
-      md5: 655e0eb7af1834d7d05f1a3ce1447ea6
+      md5: eef6a6d2c9bd14b326d6d5d1272ba8c8
       size: 535
     - path: output/feature_drift_ranker.csv
       hash: md5
@@ -73,12 +73,12 @@ stages:
       size: 39253
     - path: output/performance.png
       hash: md5
-      md5: 128d6c5c2e8e6ffa429a6e5bd8b457f0
-      size: 53112
+      md5: e3c5322a5a4bb176050cbeec6d6e9537
+      size: 53381
     - path: output/performance_results.csv
       hash: md5
-      md5: 10f3f4492459d42b3573e8668dce76a6
-      size: 81336
+      md5: 4f99eed441faafd13e4bd05324853a61
+      size: 80834
     - path: output/results_multivariate.csv
       hash: md5
       md5: d68e842620f2d1d527bec99a53a29823
