@@ -36,8 +36,7 @@ jobs:
 
       - name: pre-PR message
         run: |
-          dvc metrics show --md > report.md
-          cat output/metrics.json >> report.md
+          cat output/metrics.json > report.md
           cml comment create report.md
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN  }}

@@ -65,3 +65,12 @@ jobs:
           git commit -m "refresh files that were generated in commit $last_commit"
           git push
 
+      - uses: iterative/setup-cml@v1
+
+      - name: pre-PR message
+        run: |
+          dvc metrics show --md > report.md
+          cml comment create report.md
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
+
