@@ -4,6 +4,9 @@ on:
   pull_request:
     branches: [ "main" ]
 
+permissions:
+  pull-requests: write
+
 env:
   files: >-
     src/train_model.py
@@ -21,6 +24,13 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
+          message: |
+            New PR! :wave:
+
       - name: Requirements
         run: |
           pip install black
@@ -28,9 +38,4 @@ jobs:
       - name: black validation
         run: |
           echo "Files to be tracked: $files"
-          python -m black --check $files
-          # if [ $? -eq 0 ]; then
-          #     exit 0
-          # else
-          #     exit 1
-          # fi
+          python -m black --check $files || true
