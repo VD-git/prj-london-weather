@@ -33,8 +33,8 @@ jobs:
 
       - name: pre-PR message
         run: |
-          cat output/metrics.json > report.md
-          cml comment create report.md
+          cat output/metrics.json
+          # cml comment create report.md
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
 
