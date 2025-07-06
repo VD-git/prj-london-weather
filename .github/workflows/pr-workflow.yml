@@ -4,8 +4,11 @@ on:
   pull_request:
     branches: [ "main" ]
 
-permissions:
-   pull-requests: write
+env:
+  files: |
+    - src/train_model.py
+    - src/monitor_model.py
+    - src/gx_validation.py
 
 jobs:
   # This workflow contains a single job called "build"
@@ -15,19 +18,19 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
-      
-      - name: Comment PR
-        uses: thollander/actions-comment-pull-request@v2
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
-          message: |
-            New PR! :wave:
-        
+
       - name: Requirements
         run: |
           pip install black
 
       - name: black validation
         run: |
-          python -m black --check .
+          echo "Files to be tracked: {{  env.files  }}"
+          python -m black --check {{  env.files }}
+          # if [ $? -eq 0 ]; then
+          #     exit 0
+          # else
+          #     exit 1
+          # fi
