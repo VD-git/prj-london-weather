@@ -6,9 +6,9 @@ on:
 
 env:
   files: >-
-    - src/train_model.py
-    - src/monitor_model.py
-    - src/gx_validation.py
+    src/train_model.py
+    src/monitor_model.py
+    src/gx_validation.py
 
 jobs:
   # This workflow contains a single job called "build"
@@ -28,7 +28,7 @@ jobs:
       - name: black validation
         run: |
           echo "Files to be tracked: $files"
-          python -m black --check {{  env.files }}
+          python -m black --check $files
           # if [ $? -eq 0 ]; then
           #     exit 0
           # else
