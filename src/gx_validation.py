@@ -33,6 +33,10 @@ def define_suite():
             min_value = -10,
             condition_parser = "pandas",
             row_condition = 'sunshine >= 0'
+        ),
+        gx.expectations.ExpectColumnValuesToBeBetween(
+            column = "cloud_cover",
+            min_value = 0
         )
     ]
 
