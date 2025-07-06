@@ -27,7 +27,7 @@ jobs:
 
       - name: black validation
         run: |
-          echo "Files to be tracked: {{  env.files  }}"
+          echo "Files to be tracked: $files"
           python -m black --check {{  env.files }}
           # if [ $? -eq 0 ]; then
           #     exit 0
