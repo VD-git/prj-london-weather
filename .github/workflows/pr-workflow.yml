@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
 
 env:
-  files: |
+  files: >-
     - src/train_model.py
     - src/monitor_model.py
     - src/gx_validation.py
