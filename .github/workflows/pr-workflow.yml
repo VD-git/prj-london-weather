@@ -4,14 +4,11 @@ on:
   pull_request:
     branches: [ "main" ]
 
-permissions:
-  pull-requests: write
-
 env:
-  files: >-
-    src/train_model.py
-    src/monitor_model.py
-    src/gx_validation.py
+  files: |
+    - src/train_model.py
+    - src/monitor_model.py
+    - src/gx_validation.py
 
 jobs:
   # This workflow contains a single job called "build"
@@ -23,6 +20,19 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
+
+      - uses: iteractive/setup-cml@v1
+
+      - name: pre-Evaluation
+        run: |
+          python3 src/gx_validation.py --csv london_weather.csv
+
+      - name: pre-PR message
+        run: |
+          cat output/metrics.json >> report.md
+          cml comment create report.md
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
 
       - name: Comment PR
         uses: thollander/actions-comment-pull-request@v2
@@ -37,5 +47,5 @@ jobs:
 
       - name: black validation
         run: |
-          echo "Files to be tracked: $files"
-          python -m black --check $files || true
+          echo "Files to be tracked: {{  env.files  }}"
+          python -m black --check {{  env.files }}
