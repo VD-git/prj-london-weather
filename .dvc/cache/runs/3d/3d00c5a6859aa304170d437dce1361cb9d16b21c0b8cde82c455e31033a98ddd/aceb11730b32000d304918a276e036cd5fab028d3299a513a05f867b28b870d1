@@ -1,0 +1,20 @@
+cmd: "python3 src/train_model.py --csv old_london_weather.csv --params '{\"model__max_depth\"\
+  : [5], \"model__n_estimators\": [100]}'\n"
+deps:
+- path: data/old_london_weather.csv
+  hash: md5
+  md5: e444f3cd983d2b64c54f9763c4c28931
+  size: 776508
+- path: src/train_model.py
+  hash: md5
+  md5: 65a6908f1f3bcd4da95f2bdc41899c2c
+  size: 2612
+outs:
+- path: output/model.pkl
+  hash: md5
+  md5: af33f1258e2edfc5551b8f96474eac71
+  size: 12606255
+- path: output/model_metrics.json
+  hash: md5
+  md5: e4b81eda86c6dc960dc9c92c29ebd85c
+  size: 28
