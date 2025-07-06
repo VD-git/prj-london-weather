@@ -18,7 +18,7 @@ stages:
       size: 4556
   train_model:
     cmd: "python3 src/train_model.py --csv old_london_weather.csv --params '{\"model__max_depth\"\
-      : [5, 7], \"model__n_estimators\": [100, 200]}'\n"
+      : [7, 8], \"model__n_estimators\": [100, 200]}'\n"
     deps:
     - path: data/old_london_weather.csv
       hash: md5
@@ -31,12 +31,12 @@ stages:
     outs:
     - path: output/model.pkl
       hash: md5
-      md5: b1774288d2dc51c0902bc8c7e4ecc9dd
-      size: 12604815
+      md5: 4cc44df23e3b975e65ac0b6ef0823091
+      size: 12589983
     - path: output/model_metrics.json
       hash: md5
-      md5: 95f11e8d3b8283ab87e29ce6b13dec16
-      size: 27
+      md5: edebb25761993cab98d27019bb955825
+      size: 28
   monitor_model:
     cmd: "python3 src/monitor_model.py --date_col \"date\" --y_label \"mean_temp\"\
       \ --method \"wasserstein\" --reference_csv \"old_london_weather.csv\" --analysis_csv
@@ -52,8 +52,8 @@ stages:
       size: 776508
     - path: output/model.pkl
       hash: md5
-      md5: b1774288d2dc51c0902bc8c7e4ecc9dd
-      size: 12604815
+      md5: 4cc44df23e3b975e65ac0b6ef0823091
+      size: 12589983
     - path: src/monitor_model.py
       hash: md5
       md5: 57fffac895259543765b7cf5685f2eb7
@@ -61,8 +61,8 @@ stages:
     outs:
     - path: output/feature_drift_correlation_ranker.csv
       hash: md5
-      md5: da8e38a2d333a7e1a34041dfd7589d0e
-      size: 536
+      md5: 5cdb0fd6e60edc23406ecfc9e437994d
+      size: 531
     - path: output/feature_drift_ranker.csv
       hash: md5
       md5: ad5dc40c41d1b77f12f7e88db21b5682
@@ -73,12 +73,12 @@ stages:
       size: 39253
     - path: output/performance.png
       hash: md5
-      md5: 6aa63aa29311bb11db2c0089d86cd053
-      size: 52868
+      md5: c7d115c0561f32620ac0542d9dcdce28
+      size: 52754
     - path: output/performance_results.csv
       hash: md5
-      md5: 025c58b99023ccd6df2ca4556ab06f7b
-      size: 81842
+      md5: 5322edf0a0919cf08b37503b6e02dd83
+      size: 81331
     - path: output/results_multivariate.csv
       hash: md5
       md5: d68e842620f2d1d527bec99a53a29823
