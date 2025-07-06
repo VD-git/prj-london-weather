@@ -18,7 +18,7 @@ stages:
       - output/model.pkl
     metrics:
       - output/model_metrics.json:
-          cache: false
+          cache: true
 
   monitor_model:
     cmd: |
