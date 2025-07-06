@@ -54,6 +54,7 @@ jobs:
           git rm -r --cached output/
           git commit -m "stop tracking outputs"
           dvc repro
+          dvc metrics diff --md
           dvc dag
           dvc dag --outs
 
