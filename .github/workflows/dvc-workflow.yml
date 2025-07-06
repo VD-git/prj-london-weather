@@ -54,7 +54,7 @@ jobs:
           git rm -r --cached output/
           git commit -m "stop tracking outputs"
           dvc repro
-          dvc metrics diff --md
+          dvc metrics diff --md > change.md
           dvc dag
           dvc dag --outs
 
@@ -72,9 +72,9 @@ jobs:
       - name: Metrics Validation
         run: |
           dvc metrics show --md > report.md
-          # git fetch --prune
           dvc metrics diff --md main >> report.md
           cml comment create report.md
+          cml comment create change.md
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
 
