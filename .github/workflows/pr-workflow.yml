@@ -21,6 +21,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
+      - name: Requirements
+        run: |
+          pip install -r src/requirements.txt
+
       - uses: iterative/setup-cml@v1
 
       - name: pre-Evaluation
