@@ -12,6 +12,7 @@ on:
 
 permissions:
     contents: write
+    pull-requests: write
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -67,7 +68,7 @@ jobs:
 
       - uses: iterative/setup-cml@v1
 
-      - name: pre-PR message
+      - name: Metrics Validation
         run: |
           dvc metrics show --md > report.md
           cml comment create report.md
