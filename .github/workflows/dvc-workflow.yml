@@ -75,10 +75,18 @@ jobs:
           cml comment create report.md
           cml comment create change.md
 
-          cat change.md
-          cat change.md | tail -1 
-          cat change.md | tail -1 | cut -d '|' -f 6
-          cat change.md | tail -1 | cut -d '|' -f 6 | tail -1
+          result1=$(cat change.md)
+          result2=$(cat change.md | tail -1)
+          result3=$(cat change.md | tail -1 | cut -d '|' -f 6)
+          result4=$(cat change.md | tail -1 | cut -d '|' -f 6 | tail -1)
+
+          echo $result1
+          echo $result2
+          echo $result3
+          echo $result4
+
+          echo "teste"
+          
           if echo "$(cat change.md | tail -n +2 | cut -d '|' -f 6 | tail -1)" | awk '{if ($1 > -10) print "true"; else print "false"}' | grep -q "true"; then
               cml pr create --message "Hyperparameter" --branch "pr-validation" --target-branch "main"
           else
