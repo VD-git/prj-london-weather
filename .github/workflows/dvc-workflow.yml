@@ -80,9 +80,13 @@ jobs:
           result3=$(cat change.md | cut -d '|' -f 6)
           result4=$(cat change.md | cut -d '|' -f 6 | tail -1)
 
+          echo "teste1"
           echo $result1
+          echo "teste2"
           echo $result2
+          echo "teste3"
           echo $result3
+          echo "teste4"
           echo $result4
 
           echo "teste"
