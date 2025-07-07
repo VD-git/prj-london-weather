@@ -76,7 +76,7 @@ jobs:
           cml comment create change.md
 
           cat change.md
-          change=$(cat change.md | cut -d '|' -f 6 | grep -oP '-?\d+\.\d+')
+          change=$(cat change.md | cut -d '|' -f 6 | grep -oE '[+-]?[0-9]+\.[0-9]+')
           
           if echo "$change" | awk '{if ($1 > 0) print "true"; else print "false"}' | grep -q "true"; then
               echo "Positive change of $change was detected, so a pull request will be opened"
