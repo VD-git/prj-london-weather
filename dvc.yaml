@@ -10,7 +10,7 @@ stages:
 
   train_model:
     cmd: |
-      python3 src/train_model.py --csv old_london_weather.csv --params '{"model__max_depth": [1], "model__n_estimators": [100]}'
+      python3 src/train_model.py --csv old_london_weather.csv --params '{"model__max_depth": [5], "model__n_estimators": [100]}'
     deps:
       - data/old_london_weather.csv
       - src/train_model.py
