@@ -5,7 +5,7 @@ stages:
     deps:
     - path: data/london_weather.csv
       hash: md5
-      md5: c02528c4e7595267cbcb2c5c2c349aec
+      md5: 1ea97cab26a897682399e34076d9fd25
       size: 829768
     - path: src/gx_validation.py
       hash: md5
