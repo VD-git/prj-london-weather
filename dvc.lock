@@ -18,7 +18,7 @@ stages:
       size: 4556
   train_model:
     cmd: "python3 src/train_model.py --csv old_london_weather.csv --params '{\"model__max_depth\"\
-      : [2], \"model__n_estimators\": [100]}'\n"
+      : [1], \"model__n_estimators\": [100]}'\n"
     deps:
     - path: data/old_london_weather.csv
       hash: md5
@@ -31,11 +31,11 @@ stages:
     outs:
     - path: output/model.pkl
       hash: md5
-      md5: 737c9bd6b00624d88f49e6042a8fc5ea
-      size: 12570831
+      md5: 16cea32be9528ab3fe5a001ae7e67a1a
+      size: 12597615
     - path: output/model_metrics.json
       hash: md5
-      md5: 7eb08ef0bde1c0a014b7f7f692e96808
+      md5: 11a95d0c2c33306a983ccddd854149bc
       size: 27
   monitor_model:
     cmd: "python3 src/monitor_model.py --date_col \"date\" --y_label \"mean_temp\"\
@@ -52,8 +52,8 @@ stages:
       size: 776508
     - path: output/model.pkl
       hash: md5
-      md5: 737c9bd6b00624d88f49e6042a8fc5ea
-      size: 12570831
+      md5: 16cea32be9528ab3fe5a001ae7e67a1a
+      size: 12597615
     - path: src/monitor_model.py
       hash: md5
       md5: 57fffac895259543765b7cf5685f2eb7
@@ -61,8 +61,8 @@ stages:
     outs:
     - path: output/feature_drift_correlation_ranker.csv
       hash: md5
-      md5: 2b989aef924f57036e25bc134985b492
-      size: 527
+      md5: ab139e771a699f6544420d0e33f895b2
+      size: 530
     - path: output/feature_drift_ranker.csv
       hash: md5
       md5: ad5dc40c41d1b77f12f7e88db21b5682
@@ -73,12 +73,12 @@ stages:
       size: 39253
     - path: output/performance.png
       hash: md5
-      md5: 59b621f982086d3cca2f8d30568ab77d
-      size: 52416
+      md5: d16f2e8971c9910a368dc0c0dbf90078
+      size: 52626
     - path: output/performance_results.csv
       hash: md5
-      md5: 4a08abf3a6ceb15adb067a8fbec056d1
-      size: 80948
+      md5: d96948ef3ddd1ed5ab604720fb04cb8c
+      size: 81817
     - path: output/results_multivariate.csv
       hash: md5
       md5: d68e842620f2d1d527bec99a53a29823
