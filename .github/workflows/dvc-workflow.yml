@@ -74,8 +74,12 @@ jobs:
           dvc metrics show --md > report.md
           cml comment create report.md
           cml comment create change.md
-
+          
+          
           cat change.md
+          n_registers=$(cat change.md | wc -l)
+          echo $n_registers
+          
           change=$(cat change.md | cut -d '|' -f 6 | grep -oE '[+-]?[0-9]+\.[0-9]+')
           
           if echo "$change" | awk '{if ($1 > 0) print "true"; else print "false"}' | grep -q "true"; then
