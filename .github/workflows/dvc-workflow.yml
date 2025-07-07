@@ -79,7 +79,8 @@ jobs:
           change=$(cat change.md | cut -d '|' -f 6 | grep -oP '\d+\.\d+')
           
           if echo "$change" | awk '{if ($1 > -10) print "true"; else print "false"}' | grep -q "true"; then
-              cml pr create --message "Hyperparameter" --branch "pr-validation" --target-branch "main"
+              echo "Positive change of $change was detected, so a pull request will be opened"
+              cml pr create --message "Hyperparameter - Change $change" --branch "pr-validation" --target-branch "main"
           else
               echo "Condition to open a Pull Request not satisfied"
           fi
