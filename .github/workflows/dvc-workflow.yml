@@ -75,6 +75,8 @@ jobs:
           cml comment create report.md
           cml comment create change.md
 
+          cat change.md
+
           cml pr create --message "Hyperparameter" --branch "pr-validation" --target-branch "main"
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
