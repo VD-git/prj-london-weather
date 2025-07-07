@@ -82,7 +82,7 @@ jobs:
               echo "Positive change of $change was detected, so a pull request will be opened"
               cml pr create --message "Hyperparameter - Change $change" --branch "pr-validation" --target-branch "main"
           else
-              echo "Condition to open a Pull Request not satisfied"
+              echo "Condition to open a pull request not satisfied, Change of $change"
           fi
 
         env:
