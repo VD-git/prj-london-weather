@@ -76,14 +76,14 @@ jobs:
           cml comment create change.md
 
           cat change.md
-          result1=$(cat change.md | cut -d '|' -f 6)
-          result2=$(cat change.md | cut -d '|' -f 6 | cut -d ' ' -f 1)
+          result1=$(cat change.md | cut -d '|' -f 6 | grep -oP '\d+\.\d+')
+          result2=$(cat change.md | cut -d '|' -f 6 | cut -d ' ' -f 1 | grep -oP '\d+\.\d+')
           # result3=$(cat change.md | cut -d '|' -f 6)
-          result3=$(cat change.md | cut -d '|' -f 6 | cut -d ' ' -f 2)
-          result4=$(cat change.md | cut -d '|' -f 6 | cut -d ' ' -f 3)
-          result5=$(cat change.md | cut -d '|' -f 6 | cut -d ' ' -f 4)
-          result6=$(cat change.md | cut -d '|' -f 6 | cut -d ' ' -f 5)
-          result7=$(cat change.md | cut -d '|' -f 6 | cut -d ' ' -f 6)
+          result3=$(cat change.md | cut -d '|' -f 6)
+          result4=$(cat change.md | cut -d '|' -f 6 | cut -d ' ' -f 13)
+          result5=$(cat change.md | cut -d '|' -f 6 | cut -d ' ' -f 14)
+          result6=$(cat change.md | cut -d '|' -f 6 | cut -d ' ' -f 15)
+          result7=$(cat change.md | cut -d '|' -f 6 | cut -d ' ' -f 16)
           result8=$(cat change.md | cut -d '|' -f 13)
           result9=$(cat change.md | cut -d '|' -f 14)
           result10=$(cat change.md | cut -d '|' -f 15)
