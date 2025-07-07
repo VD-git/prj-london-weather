@@ -75,18 +75,19 @@ jobs:
           cml comment create report.md
           cml comment create change.md
           
-          
           cat change.md
           n_registers=$(cat change.md | wc -l)
-          echo $n_registers
           
-          change=$(cat change.md | cut -d '|' -f 6 | grep -oE '[+-]?[0-9]+\.[0-9]+')
-          
-          if echo "$change" | awk '{if ($1 > 0) print "true"; else print "false"}' | grep -q "true"; then
-              echo "Positive change of $change was detected, so a pull request will be opened"
-              cml pr create --message "Hyperparameter - Change $change" --branch "pr-validation" --target-branch "main"
+          if [ "$n_registers" -gt 3 ]; then 
+            change=$(cat change.md | cut -d '|' -f 6 | grep -oE '[+-]?[0-9]+\.[0-9]+')
+            if echo "$change" | awk '{if ($1 > 0) print "true"; else print "false"}' | grep -q "true"; then
+                echo "Positive change of $change was detected, so a pull request will be opened"
+                cml pr create --message "Hyperparameter - Change $change" --branch "pr-validation" --target-branch "main"
+            else
+                echo "Condition to open a pull request not satisfied, Change of $change"
+            fi
           else
-              echo "Condition to open a pull request not satisfied, Change of $change"
+              echo Metrics were not changed"
           fi
 
         env:
