@@ -1,0 +1,15 @@
+cmd: "python3 src/gx_validation.py --csv london_weather.csv\n"
+deps:
+- path: data/london_weather.csv
+  hash: md5
+  md5: 1ea97cab26a897682399e34076d9fd25
+  size: 829768
+- path: src/gx_validation.py
+  hash: md5
+  md5: 6fe2108e56e78f791a58309d574e4cb1
+  size: 2738
+outs:
+- path: output/metrics.json
+  hash: md5
+  md5: 36fef5d8533b8e669d33608ee2bb8d40
+  size: 4190
