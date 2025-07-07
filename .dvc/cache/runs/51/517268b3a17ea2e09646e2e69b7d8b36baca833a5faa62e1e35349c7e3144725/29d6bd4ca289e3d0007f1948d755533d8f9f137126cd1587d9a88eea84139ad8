@@ -1,0 +1,53 @@
+cmd: "python3 src/monitor_model.py --date_col \"date\" --y_label \"mean_temp\" --method
+  \"wasserstein\" --reference_csv \"old_london_weather.csv\" --analysis_csv \"new_london_weather.csv\"\
+  \n"
+deps:
+- path: data/new_london_weather.csv
+  hash: md5
+  md5: 654ab12459755980bd09457ce182fce1
+  size: 38023
+- path: data/old_london_weather.csv
+  hash: md5
+  md5: e444f3cd983d2b64c54f9763c4c28931
+  size: 776508
+- path: output/model.pkl
+  hash: md5
+  md5: 72f50e75a4faead5a2c82e17cb6352ab
+  size: 12565215
+- path: src/monitor_model.py
+  hash: md5
+  md5: 57fffac895259543765b7cf5685f2eb7
+  size: 8877
+outs:
+- path: output/feature_drift_correlation_ranker.csv
+  hash: md5
+  md5: c695db3a8a2a787ba26a023b48099f8a
+  size: 529
+- path: output/feature_drift_ranker.csv
+  hash: md5
+  md5: ad5dc40c41d1b77f12f7e88db21b5682
+  size: 156
+- path: output/multivariate.png
+  hash: md5
+  md5: 06f2e828d68a584b60cf3fb74f1c26aa
+  size: 39253
+- path: output/performance.png
+  hash: md5
+  md5: df1b1527da1300660a368a9ce7f52113
+  size: 52513
+- path: output/performance_results.csv
+  hash: md5
+  md5: 27f4cddd0a30b05cdeb30a3bd41b775e
+  size: 81841
+- path: output/results_multivariate.csv
+  hash: md5
+  md5: d68e842620f2d1d527bec99a53a29823
+  size: 4089
+- path: output/results_univariate.csv
+  hash: md5
+  md5: 85221c55d6c77ddd80b0b6416e3b068f
+  size: 20640
+- path: output/univariate.png
+  hash: md5
+  md5: 72e64d55d9f0161bff8a7b8fce5c362f
+  size: 481384
