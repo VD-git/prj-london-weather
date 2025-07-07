@@ -75,12 +75,22 @@ jobs:
           cml comment create report.md
           cml comment create change.md
 
-          result1=$(cat change.md)
-          result2=$(cat change.md | cut -d '|' -f 6 | cut -d ' ' -f 3)
-          result3=$(cat change.md | cut -d '|' -f 6)
-          result4=$(cat change.md | cut -d '|' -f 6 | cut -d ' ' -f 4)
-          result5=$(cat change.md | cut -d '|' -f 6 | cut -d ' ' -f 5)
-
+          result1=$(cat change.md | cut -d ' | ' -f 6 | cut -d ' ' -f 1)
+          result2=$(cat change.md | cut -d ' | ' -f 6 | cut -d ' ' -f 2)
+          # result3=$(cat change.md | cut -d '|' -f 6)
+          result3=$(cat change.md | cut -d ' | ' -f 6 | cut -d ' ' -f 3)
+          result4=$(cat change.md | cut -d ' | ' -f 6 | cut -d ' ' -f 4)
+          result5=$(cat change.md | cut -d ' | ' -f 6 | cut -d ' ' -f 5)
+          result6=$(cat change.md | cut -d ' | ' -f 6 | cut -d ' ' -f 6)
+          result7=$(cat change.md | cut -d ' | ' -f 6 | cut -d ' ' -f 7)
+          result8=$(cat change.md | cut -d ' | ' -f 6 | cut -d ' ' -f 8)
+          result9=$(cat change.md | cut -d ' | ' -f 6 | cut -d ' ' -f 9)
+          result10=$(cat change.md | cut -d ' | ' -f 6 | cut -d ' ' -f 10)
+          result11=$(cat change.md | cut -d ' | ' -f 6 | cut -d ' ' -f 11)
+          result12=$(cat change.md | cut -d ' | ' -f 6 | cut -d ' ' -f 12)
+          result13=$(cat change.md | cut -d ' | ' -f 6 | cut -d ' ' -f 13)
+          result14=$(cat change.md | cut -d ' | ' -f 6 | cut -d ' ' -f 14)
+          
           echo "teste1"
           echo $result1
           echo "teste2"
@@ -91,6 +101,24 @@ jobs:
           echo $result4
           echo "teste5"
           echo $result5
+          echo "teste6"
+          echo $result6
+          echo "teste7"
+          echo $result7
+          echo "teste8"
+          echo $result8
+          echo "teste9"
+          echo $result9
+          echo "teste10"
+          echo $result10
+          echo "teste11"
+          echo $result11
+          echo "teste12"
+          echo $resul12
+          echo "teste13"
+          echo $result13
+          echo "teste14"
+          echo $result14
 
           echo "teste"
           
