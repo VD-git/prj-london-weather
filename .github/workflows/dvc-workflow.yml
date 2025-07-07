@@ -77,7 +77,12 @@ jobs:
 
           cat change.md
 
-          cml pr create --message "Hyperparameter" --branch "pr-validation" --target-branch "main"
+          if echo "$(cat change.md | tail -n +2 | cut -d '|' -f 6 | tail -1)" | awk '{if ($1 > 0) print "true"; else print "false"}' | grep -q "true"; then
+              cml pr create --message "Hyperparameter" --branch "pr-validation" --target-branch "main"
+          else
+              echo "Condition to open a Pull Request not satisfied"
+          fi
+
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
 
