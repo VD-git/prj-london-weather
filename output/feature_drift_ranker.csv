@@ -1,9 +1,0 @@
-number_of_alerts,column_name,rank
-1,sunshine,1
-1,pressure,2
-1,precipitation,3
-1,global_radiation,4
-0,snow_depth,5
-0,min_temp,6
-0,max_temp,7
-0,cloud_cover,8
