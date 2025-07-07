@@ -76,9 +76,10 @@ jobs:
           cml comment create change.md
 
           result1=$(cat change.md)
-          result2=$(cat change.md | cut -d '|' -f 18)
+          result2=$(cat change.md | cut -d '|' -f 6 | cut -d ' ' -f 3)
           result3=$(cat change.md | cut -d '|' -f 6)
-          result4=$(cat change.md | cut -d '|' -f 6 | tail -1)
+          result4=$(cat change.md | cut -d '|' -f 6 | cut -d ' ' -f 4)
+          result5=$(cat change.md | cut -d '|' -f 6 | cut -d ' ' -f 5)
 
           echo "teste1"
           echo $result1
@@ -88,6 +89,8 @@ jobs:
           echo $result3
           echo "teste4"
           echo $result4
+          echo "teste5"
+          echo $result5
 
           echo "teste"
           
