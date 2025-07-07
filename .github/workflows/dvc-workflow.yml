@@ -55,6 +55,7 @@ jobs:
           git commit -m "stop tracking outputs"
           dvc repro
           dvc metrics diff --md > change.md
+          dvc metrics diff > change2.md
           dvc dag
           dvc dag --outs
 
@@ -76,50 +77,14 @@ jobs:
           cml comment create change.md
 
           cat change.md
+          cat change2.md
           result1=$(cat change.md | cut -d '|' -f 6 | grep -oP '\d+\.\d+')
-          result2=$(cat change.md | cut -d '|' -f 6 | cut -d ' ' -f 1 | grep -oP '\d+\.\d+')
-          # result3=$(cat change.md | cut -d '|' -f 6)
-          result3=$(cat change.md | cut -d '|' -f 6)
-          result4=$(cat change.md | cut -d '|' -f 6 | cut -d ' ' -f 13)
-          result5=$(cat change.md | cut -d '|' -f 6 | cut -d ' ' -f 14)
-          result6=$(cat change.md | cut -d '|' -f 6 | cut -d ' ' -f 15)
-          result7=$(cat change.md | cut -d '|' -f 6 | cut -d ' ' -f 16)
-          result8=$(cat change.md | cut -d '|' -f 13)
-          result9=$(cat change.md | cut -d '|' -f 14)
-          result10=$(cat change.md | cut -d '|' -f 15)
-          result11=$(cat change.md | cut -d '|' -f 16)
-          result12=$(cat change.md | cut -d '|' -f 17)
-          result13=$(cat change.md | cut -d '|' -f 18)
-          result14=$(cat change.md | cut -d '|' -f 19)
-          
+          result2=$(cat change.md | cut -d '|' -f 6)
           echo "teste1"
           echo $result1
           echo "teste2"
           echo $result2
-          echo "teste3"
-          echo $result3
-          echo "teste4"
-          echo $result4
-          echo "teste5"
-          echo $result5
-          echo "teste6"
-          echo $result6
-          echo "teste7"
-          echo $result7
-          echo "teste8"
-          echo $result8
-          echo "teste9"
-          echo $result9
-          echo "teste10"
-          echo $result10
-          echo "teste11"
-          echo $result11
-          echo "teste12"
-          echo $resul12
-          echo "teste13"
-          echo $result13
-          echo "teste14"
-          echo $result14
+          
 
           echo "teste"
           
