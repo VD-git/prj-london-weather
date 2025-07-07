@@ -87,7 +87,7 @@ jobs:
                 echo "Condition to open a pull request not satisfied, Change of $change"
             fi
           else
-              echo Metrics were not changed"
+              echo "Metrics were not changed"
           fi
 
         env:
