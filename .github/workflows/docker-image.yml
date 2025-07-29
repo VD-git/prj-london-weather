@@ -47,6 +47,3 @@ jobs:
           context: .
           tags: ${{ steps.docker_meta.outputs.tags }}
           push: true
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-          platforms: linux/amd64
