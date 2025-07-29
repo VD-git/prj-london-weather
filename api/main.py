@@ -30,7 +30,7 @@ async def startup_event():
 
 @app.get("/")
 async def say_hello():
-    return {"greeting": "Hello Mate!"}
+    return {"greeting": "Hello Mate Gabrielzinho!"}
 
 @app.post("/prediction/")
 async def output(payload: PayloadItem):
