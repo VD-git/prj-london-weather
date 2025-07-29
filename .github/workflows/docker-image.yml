@@ -5,6 +5,11 @@ on:
     branches: [ "docker" ]
   workflow_dispatch:
 
+permissions:
+  security-events: write
+  packages: write
+  contents: read
+
 jobs:
 
   build:
@@ -25,11 +30,22 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      - name: Docker metadata
+        id: docker_meta
+        uses: docker/metadata-action@v5
+        with:
+          images: victordias94/london_api
+          flavor: |
+            latest=false
+          tags: |
+            type=raw,value=${{ github.run_id }}
+            type=raw,value=latest
+
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
           context: .
-          tags: ${{ github.run_id }}
+          tags: ${{ steps.docker_meta.outputs.tags }}
           push: true
           cache-from: type=gha
           cache-to: type=gha,mode=max
