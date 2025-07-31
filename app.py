@@ -29,7 +29,7 @@ init_random_inputs()
 if __name__ == "__main__":
     
     st.set_page_config(page_title="Weather Prediction", layout="centered")
-    st.title('🌤️ DVC + API + Docker Project')
+    st.title('🌤️ DVC + API + Docker Application')
     
     with st.status("🕒 API is warming up (free tier may take a while)...", expanded=True) as status:
         try:
