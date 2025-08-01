@@ -5,6 +5,8 @@ import uuid
 import requests
 import json
 import random
+import yaml
+import os
 import time
 
 logger = getLogger()
@@ -24,10 +26,7 @@ def init_random_inputs():
     st.session_state.setdefault("pressure", round(random.uniform(95960.0, 104820.0), 1))
     st.session_state.setdefault("snow_depth", round(random.uniform(0.0, 22.0), 1))
 
-init_random_inputs()
-
-if __name__ == "__main__":
-    
+def main_page():
     st.set_page_config(page_title="Weather Prediction", layout="centered")
     st.title('🌤️ DVC + API + Docker Application')
     
@@ -91,4 +90,100 @@ if __name__ == "__main__":
                     message_placeholder.error(f"❌ API returned status {response.status_code}")
             except requests.RequestException as e:
                 message_placeholder.error(f"Failed to reach API: {e}")
+        
+    docs_button = st.button("📄 Go to documentations page")
+    if docs_button:
+        st.session_state.page = 'docs'
+        st.rerun()   
+                
+def docs_page():
+    st.set_page_config(page_title="📄 Documentation Page", layout="centered")
+    st.title('📄 Project Documentation')
+    
+    st.markdown("### 🧠 GitHub Repository")
+    st.markdown("[🔗 View on GitHub](https://github.com/VD-git/prj-london-weather)")
+
+    st.markdown("## 🔍 Model Metrics")
+    try:
+        with open(os.path.join("output", "model_metrics.json"), "r") as f:
+            metrics = json.load(f)
+        with st.expander("Show model metrics"):
+            st.json(metrics)
+    except Exception as e:
+        st.error(f"Error loading model metrics: {e}")
+
+    st.markdown("## 🐳 Docker Image")
+    st.markdown("[View on Docker Hub](https://hub.docker.com/repository/docker/victordias94/london_api/tags)")
+    
+    st.markdown("### 🌐 API Documentation")
+    st.info("🚨 Remember: this is a free API hosted on Render and is publicly accessible. "
+            "Please do not overload it with too many requests, it may crash, use wisely.")
+
+    with st.expander("🔎 GET Method"):
+        st.markdown("**Endpoint:** [https://prj-london-weather.onrender.com/](https://prj-london-weather.onrender.com/)")
+        st.code("curl https://prj-london-weather.onrender.com/", language="bash")
+        st.markdown("Returns a simple welcome or health check message.")
+
+    with st.expander("📬 POST Method"):
+        st.markdown("**Endpoint:** [https://prj-london-weather.onrender.com/prediction/](https://prj-london-weather.onrender.com/prediction/)")
+        st.markdown("Send weather-related features to get a prediction from the model.")
+
+        st.markdown("**Example `curl` request:**")
+        st.code("""
+            curl -X POST https://prj-london-weather.onrender.com/prediction/ \\
+                -H "Content-Type: application/json" \\
+                -d '{
+                    "cloud_cover": 75.0,
+                    "sunshine": 3.5,
+                    "global_radiation": 120.8,
+                    "max_temp": 18.2,
+                    "min_temp": 10.4,
+                    "precipitation": 2.3,
+                    "pressure": 101200.6,
+                    "snow_depth": 0.0
+                    }'
+            """, language="bash")
+
+        st.markdown("**JSON payload format:**")
+        st.code("""
+            {
+            "cloud_cover": 75.0,
+            "sunshine": 3.5,
+            "global_radiation": 120.8,
+            "max_temp": 18.2,
+            "min_temp": 10.4,
+            "precipitation": 2.3,
+            "pressure": 101200.6,
+            "snow_depth": 0.0
+            }
+            """, language="json")
+
+    st.markdown("## 📦 DVC Configuration")
+    try:
+        with open("dvc.yaml", "r") as f:
+            dvc_config = yaml.safe_load(f)
+        with st.expander("Show DVC configuration"):
+            st.code(yaml.dump(dvc_config), language="yaml")
+    except Exception as e:
+        st.error(f"Error loading DVC config: {e}")
+
+    # Navigation button
+    if st.button("🔙 Back to Main Page"):
+        st.session_state.page = 'main'
+        st.rerun()
+    
+if __name__ == "__main__":
+
+    if "page" not in st.session_state:
+        init_random_inputs()
+        st.session_state.page = "main"
+
+    if st.session_state.page == "main":
+        main_page()
+    elif st.session_state.page == "docs":
+        docs_page()
+
+        
+    
+    
                 
