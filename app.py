@@ -179,6 +179,7 @@ if __name__ == "__main__":
         st.session_state.page = "main"
 
     if st.session_state.page == "main":
+        init_random_inputs()
         main_page()
     elif st.session_state.page == "docs":
         docs_page()
